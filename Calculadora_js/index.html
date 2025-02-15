@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+</head>
+<body>
+
+    <h1 class="h1">Calculadora</h1>
+    <input type="text" id="exibicao" disabled class="entrada">
+    <button class="botaolimpar">C</button>
+    <button class="botao1">1</button>
+    <button class="botao2">2</button>
+    <button class="botao3">3</button>
+    <button class="botao4">4</button>
+    <button class="botao5">5</button>
+    <button class="botao6">6</button>
+    <button class="botao7">7</button>
+    <button class="botao8">8</button>
+    <button class="botao9">9</button>
+    <button class="botao0">0</button>
+    <button class="botaox">*</button>
+    <button class="botaosoma">+</button>
+    <button class="botaomenos">-</button>
+    <button class="botaodivisao">/</button>
+    <button class="botaoigual">=</button>
+</body>
+    
+    <script>
+        const exibicao = document.getElementById("exibicao")  //puxa as informações do html
+        const botoes = document.querySelectorAll("button")  //seleciona todos os botoes
+    
+        botoes.forEach(botao => {   //para cada botão encontrado no html, vai executar a função dentro do forEach
+            botao.addEventListener("click", (evento) => {   //quando o usuário clicar em qualquer botão, a função será executada
+                const valor = evento.target.innerText;  //evento.target o próprio botão que for clicado ; innerTex texto dentro do botão
+                    if (valor == "C"){  // condição
+                        exibicao.value = "";  //limpa o campo
+                    }
+                    else if (valor == "="){
+                        try{
+                            exibicao.value = eval(exibicao.value); //Calculando o resultado ; eval avalia e executa a expressão matemática que está dentro do campo 
+                        } catch (e) {
+                            exibicao.value = "Error"; // Caso erro
+                        }
+                    } else {
+                        exibicao.value += valor; 
+                    }
+    
+            });
+        });
+    </script>
+
+</body>
+</html>
+
